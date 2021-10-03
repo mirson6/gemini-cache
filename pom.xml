@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.mirson</groupId>
+    <artifactId>gemini-cache-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>gemini-cache</module>
+        <module>gemini-cache-example</module>
+    </modules>
+    <properties>
+        <spring.aspects.version>4.3.9.RELEASE</spring.aspects.version>
+        <commons.codec.version>1.10</commons.codec.version>
+        <gemini.cache.version>1.0-SNAPSHOT</gemini.cache.version>
+        <spring.boot.version>1.5.8.RELEASE</spring.boot.version>
+        <spring.data.version>1.8.8.RELEASE</spring.data.version>
+        <lombok.version>1.16.18</lombok.version>
+        <aspectjrt.version>1.8.10</aspectjrt.version>
+        <jdk.version>1.8</jdk.version>
+        <distributed.cache.redisson.version>3.4.4</distributed.cache.redisson.version>
+        <distributed.cache.redisson.spring.version>3.16.2</distributed.cache.redisson.spring.version>
+        <distributed.cache.affeine.version>2.8.0</distributed.cache.affeine.version>
+        <distributed.cache.affeine.fst.version>2.50</distributed.cache.affeine.fst.version>
+    </properties>
+    <dependencies>
+        <!-- lombok 插件，简化代码 -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+    </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <!-- Spring Boot -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+            <!-- Spring Boot Web -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+            <!-- Spring aspectj AOP  -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aspects</artifactId>
+                <version>${spring.aspects.version}</version>
+            </dependency>
+            <!-- Redisson 缓存配置 -->
+            <dependency>
+                <groupId>com.github.ben-manes.caffeine</groupId>
+                <artifactId>caffeine</artifactId>
+                <version>${distributed.cache.affeine.version}</version>
+            </dependency>
+            <!-- Redisson 缓存操作 -->
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson</artifactId>
+                <version>${distributed.cache.redisson.version}</version>
+            </dependency>
+            <!-- Spring Redisson 集成组件 -->
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-data-18</artifactId>
+                <version>${distributed.cache.redisson.spring.version}</version>
+            </dependency>
+            <!-- Redisson fst 快速序列化组件 -->
+            <dependency>
+                <groupId>de.ruedigermoeller</groupId>
+                <artifactId>fst</artifactId>
+                <version>${distributed.cache.affeine.fst.version}</version>
+            </dependency>
+            <!-- spring boot 自动化配置 依赖 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-autoconfigure</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+            <!-- spring data redis 自动化配置 依赖 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+            <!-- spring data redis 依赖  -->
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-redis</artifactId>
+                <version>${spring.data.version}</version>
+            </dependency>
+            <!-- commons 编码解码 依赖-->
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>${commons.codec.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.0.1</version>
+                <configuration>
+                    <attach>true</attach>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>
