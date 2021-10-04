@@ -5,5 +5,18 @@ package com.mirson.gemini.cache.example.service; /**
  * @date 2021/10/3
  */
 public interface IOrderService {
-    String getOrder(String orderNo);
+
+    /**
+     * 获取订单详情
+     * @param orderNo
+     * @return
+     */
+    public String getOrder(String orderNo);
+
+    /**
+     * 更新订单
+     * @param orderNo
+     * @return
+     */
+    public String updateOrder(String orderNo);
 }

@@ -34,13 +34,13 @@ app.cache.redis.global.expire: 60
 # Redis连接池最大等待时间
 app.cache.redis.pool.maxWaitMills: 3000
 # Redis单机连接地址 （单机与集群方式二选一，优先单机）
-#app.cache.redis.host: redis.kyeapi.com
+app.cache.redis.host: 127.0.0.1
 # Redis单机连接端口
 app.cache.redis.port: 6379
 # Redis 集群连接地址信息 （单机与集群方式二选一，优先单机）
-app.cache.redis.clusterNodes: 10.10.20.101:7000,10.10.20.101:7001,10.10.20.102:7000,10.10.20.102:7001,10.10.20.103:7000,10.10.20.103:7001
+#app.cache.redis.clusterNodes: 10.10.20.101:7000,10.10.20.101:7001,10.10.20.102:7000,10.10.20.102:7001,10.10.20.103:7000,10.10.20.103:7001
 # Redis连接密码
-app.cache.redis.password: Redis1234{}
+#app.cache.redis.password: Redis1234{}
 # Redis连接池超时时间（单位：毫秒， 包括连接与读取超时时间）
 app.cache.redis.pool.timeout: 3000
 # Redis数据库编号（单机方式才生效）
@@ -49,3 +49,7 @@ app.cache.redis.database: 7
 app.cache.redis.useCompression: true
 # caffeine缓存超时时间（建议与业务数据的TTL超时时间一致）
 app.cache.caffeine.expireAfterWrite: 30000
+# caffeine 初始化缓存大小（默认为0， 不限制）
+app.cache.caffeine.initialCapacity: 0
+# caffeine 最大缓存大小（默认为0， 不限制， 建议设定一个阈值，保护jvm内存）
+app.cache.caffeine.maximumSize: 0

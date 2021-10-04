@@ -25,7 +25,7 @@ public class OrderController {
     private IOrderService orderService;
 
     /**
-     * 获取订单信息
+     * 更新订单信息
      * @param orderNo
      * @return
      */
@@ -35,6 +35,21 @@ public class OrderController {
         ResponseData respData = new ResponseData();
         respData.setCode(200);
         respData.setData(orderService.getOrder(orderNo));
+        respData.setRespTime(new Date());
+        return respData;
+    }
+
+    /**
+     * 更新订单信息
+     * @param orderNo
+     * @return
+     */
+    @RequestMapping(value = "/updateOrder")
+    @ResponseBody
+    public ResponseData updateOrder(String orderNo) {
+        ResponseData respData = new ResponseData();
+        respData.setCode(200);
+        respData.setData(orderService.updateOrder(orderNo));
         respData.setRespTime(new Date());
         return respData;
     }

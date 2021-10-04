@@ -98,7 +98,7 @@ public class CacheConfigProperties {
     /**
      * Redis连接密码
      */
-    @Value("${app.cache.redis.password}")
+    @Value("${app.cache.redis.password:#{null}}")
     private String password;
 
     /**
