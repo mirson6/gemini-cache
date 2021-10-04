@@ -187,12 +187,3 @@
    ![image-20211004104236538](docs/images/image-20211004104236538.png)
    
    可以看到， 数据及时进行了更新处理。
-
-
-
-
-
-
-=======
-# gemini-cache
->>>>>>> 8f5cb3075bb388dbc4b8addea9526c733bbe1e5f
